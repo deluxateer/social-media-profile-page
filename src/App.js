@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Button } from 'reactstrap';
 import Navbar from './Components/Navbar';
 import Summary from './Components/Summary';
 import Favorites from './Components/Favorites';
 import Submition from './Components/Submition';
 import Feed from './Components/Feed';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+
+library.add(fas, fab);
 
 class App extends Component {
   render() {
@@ -13,7 +18,7 @@ class App extends Component {
       <React.Fragment>
         <Navbar></Navbar>
         <main className="container">
-          
+          <Summary></Summary>
         </main>
         <footer>
           <div class="container">
