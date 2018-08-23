@@ -1,28 +1,168 @@
-.App {
+
+/* ------------------------
+General Styles
+------------------------  */
+
+body {
+  background: #00B4DB;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to top, #0083B0, #00B4DB);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to top, #0083B0, #00B4DB); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+main {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+a,
+a:focus,
+a:hover { color: #00ACE5; }
+
+main > *             { margin-top: 15px; }
+main > *:first-child { margin-top: 0;    }
+
+h2, h3, h4 {
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+/* Post Cards */
+.post-header  {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
+.post-author {
+  margin-left: 10px;
 }
 
-.App-title {
-  font-size: 1.5em;
+.post-author .card-title {
+  font-size: 1.25rem;
+  text-align: left;
+  margin-bottom: 4px;
 }
 
-.App-intro {
-  font-size: large;
+.post-author .card-subtitle {
+  font-size: 0.8rem;
+  text-align: left;
+  margin: 0;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.post-timestamp {
+  margin-left: auto;
+}
+
+.post-social-links {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ------------------------
+Profile Summary
+------------------------  */
+
+.profile-picture {
+  max-width: 250px;
+  margin-top: 20px;
+}
+
+/* ------------------------
+NavBar
+------------------------  */
+
+.nav-item .dropdown-item,
+.nav-item .dropdown-item:focus,
+.nav-item .dropdown-item:hover {
+  color: #00ACE5;
+}
+
+.navbar-toggler .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,172,229, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+  border-color: rgb(0,172,229);
+}
+
+/* ------------------------
+Favorites
+------------------------  */
+
+.favorites .post             { margin:        30px 35px 30px; }
+.favorites .post:first-child { margin-bottom: 0;              }
+.favorites .post:last-child  { margin-top:    0;              }
+
+/* ------------------------
+Post Collection
+------------------------  */
+
+.post-submition        { margin-bottom: 25px;   }
+.post-collection .post { margin:        20px 0; }
+
+/* ------------------------
+Footer
+------------------------  */
+
+footer {
+  background-color: #fff;
+  padding: 16px 12px;
+  text-align: center;
+}
+
+.legal { margin: 0; }
+
+/* ------------------------ Support Checks ------------------------  */
+
+@supports not (display: grid) {
+  main { max-width: 40em !important; }
+}
+
+/* ------------------------ Media Queries ------------------------  */
+
+@supports (grid-area: auto) {
+
+  @media (min-width: 768px) {
+    main {
+      display: grid;
+      grid-template-areas:
+      "profile profile profile profile profile            collection collection collection"
+      "favorites favorites favorites favorites favorites  collection collection collection"
+      "nothing nothing nothing nothing nothing            collection collection collection";
+      grid-gap: 1em;
+      padding: 0;
+      margin: 15px 0;
+    }
+
+    main > * { margin: 0; }
+
+    .profile-summary { grid-area: profile;    }
+    .favorites       { grid-area: favorites;  }
+    .post-collection { grid-area: collection; }
+  }
+
+  @media (min-width: 992px) {
+    main {
+      grid-template-areas:
+      "profile profile profile        collection collection collection collection collection"
+      "favorites favorites favorites  collection collection collection collection collection"
+      "nothing nothing nothing        collection collection collection collection collection";
+      grid-gap: 1em 3em;
+    }
+
+    .post-submition,
+    .post-collection .post { margin: 0; }
+
+    .profile-feed {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1em;
+      margin: 20px 0;
+    }
+
+    .feed-most-recent { grid-column: 1/-1; }
+
+    footer    { height: 56px; }
+    footer ul { float:  left;  }
+    .legal    { float:  right; }
+  }
 }
