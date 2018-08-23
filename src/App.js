@@ -19,17 +19,21 @@ class App extends Component {
         <Navbar></Navbar>
         <main className="container">
           <Summary></Summary>
+          <Favorites></Favorites>
+          <div className="post-collection">
+            
+          </div>
         </main>
         <footer>
-          <div class="container">
-            <ul class="list-inline">
-              <li class="list-inline-item"><a href="#">About Us</a></li>
-              <li class="list-inline-item"><a href="#">Privacy</a></li>
-              <li class="list-inline-item"><a href="#">Terms</a></li>
-              <li class="list-inline-item"><a href="#">Jobs</a></li>
-              <li class="list-inline-item"><a href="#">API</a></li>
+          <div className="container">
+            <ul className="list-inline">
+              <li className="list-inline-item"><a href="#">About Us</a></li>
+              <li className="list-inline-item"><a href="#">Privacy</a></li>
+              <li className="list-inline-item"><a href="#">Terms</a></li>
+              <li className="list-inline-item"><a href="#">Jobs</a></li>
+              <li className="list-inline-item"><a href="#">API</a></li>
             </ul>
-            <div class="legal">
+            <div className="legal">
               <p>&copy;CheckOut. All rights reserved.</p>
             </div>
           </div>
