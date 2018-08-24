@@ -27,6 +27,7 @@ const Favorites = () => {
         proImgSrc="https://picsum.photos/40"
         proAltText="Profile Picture"
         authorName="Jane Smith"
+        isVerified={true}
         authorJob="Embroidery Artisan"
         timestamp="03/23"
         postText="I finally made the quilt I've always dreamed of making!"></Post>
@@ -36,6 +37,7 @@ const Favorites = () => {
         proImgSrc="https://picsum.photos/40"
         proAltText="Profile Picture"
         authorName="Chance Jackson"
+        isVerified={false}
         authorJob="Polisher"
         timestamp="03/16"
         postText="It's amazing to see how much simple polishing can do to bring out the beauty in a steel object!"></Post>

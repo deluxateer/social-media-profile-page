@@ -99,6 +99,8 @@ Post Collection
 .post-submition        { margin-bottom: 25px;   }
 .post-collection .post { margin:        20px 0; }
 
+.profile-feed { align-items: flex-start; }
+
 /* ------------------------
 Footer
 ------------------------  */

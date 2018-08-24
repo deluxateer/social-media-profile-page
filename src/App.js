@@ -21,7 +21,8 @@ class App extends Component {
           <Summary></Summary>
           <Favorites></Favorites>
           <div className="post-collection">
-            
+            <Submition></Submition>
+            <Feed></Feed>
           </div>
         </main>
         <footer>
