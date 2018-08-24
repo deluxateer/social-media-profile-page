@@ -1,14 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import SocialMedia from './SocialMedia';
 
-const Post = ({ headerImgs, proImgSrc, proAltText, feedRecent, authorName, isVerified, authorJob, timestamp, postText }) => {
+const Post = ({ id, headerImgs, proImgSrc, proAltText, feedRecent, authorName, isVerified, authorJob, timestamp, postText, onDelete }) => {
   let HeaderImgsJSX = [];
-  let key = 0;
+  let tempKey = 0;
   if (headerImgs) {
     headerImgs.map(img => {
-      HeaderImgsJSX.push(<img key={key++} className="card-img-top" src={img.headerImgSrc} alt={img.headerAltText}/>);
+      HeaderImgsJSX.push(<img key={tempKey++} className="card-img-top" src={img.headerImgSrc} alt={img.headerAltText}/>);
     });
   }
+
+  // console.log(id);
+
   return (
     <div className={feedRecent ? "post card feed-most-recent" : "post card"}>
       {HeaderImgsJSX}
@@ -23,6 +26,7 @@ const Post = ({ headerImgs, proImgSrc, proAltText, feedRecent, authorName, isVer
         </div>
         <p className="card-text">{postText}</p>
         <div className="post-social-links">
+          <button type="button" onClick={() => {onDelete(id)}} className="btn btn-sm btn-danger mr-auto">&times;</button>
           <SocialMedia></SocialMedia>
         </div>
       </div>
