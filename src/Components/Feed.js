@@ -15,7 +15,7 @@ const Feed = (props) => {
           headerImgs={post.headerImgs}
           proImgSrc={post.proImgSrc}
           proAltText={post.proAltText}
-          feedRecent={post.feedRecent}
+          feedRecent={ (posts.indexOf(post) === 0) ? true : false}
           authorName={post.authorName}
           isVerified={post.isVerified}
           authorJob={post.authorJob}

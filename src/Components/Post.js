@@ -10,8 +10,6 @@ const Post = ({ id, headerImgs, proImgSrc, proAltText, feedRecent, authorName, i
     });
   }
 
-  // console.log(id);
-
   return (
     <div className={feedRecent ? "post card feed-most-recent" : "post card"}>
       {HeaderImgsJSX}

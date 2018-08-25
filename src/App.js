@@ -23,7 +23,6 @@ class App extends Component {
           }],
           proImgSrc: "https://picsum.photos/40",
           proAltText: "Profile Picture",
-          feedRecent: true,
           authorName: "John Doe",
           isVerified: false,
           authorJob: "Web Developer",
@@ -38,7 +37,6 @@ class App extends Component {
           }],
           proImgSrc: "https://picsum.photos/40",
           proAltText: "Profile Picture",
-          feedRecent: false,
           authorName: "John Doe",
           isVerified: false,
           authorJob: "Web Developer",
@@ -59,7 +57,6 @@ class App extends Component {
           ],
           proImgSrc: "https://picsum.photos/40",
           proAltText: "Profile Picture",
-          feedRecent: false,
           authorName: "John Doe",
           isVerified: false,
           authorJob: "Web Developer",
@@ -71,7 +68,6 @@ class App extends Component {
           headerImgs: [],
           proImgSrc: "https://picsum.photos/40",
           proAltText: "Profile Picture",
-          feedRecent: false,
           authorName: "John Doe",
           isVerified: false,
           authorJob: "Web Developer",
@@ -83,8 +79,29 @@ class App extends Component {
 
   deletePost = (postId) => {
     let updatedPosts = this.state.feedPosts.filter(currPost => {
-      console.log(currPost.id, postId);
       return currPost.id !== postId;
+    });
+    this.setState({
+      feedPosts: updatedPosts
+    });
+  };
+
+  createPost = (text, image) => {
+    let currDate = new Date();
+    let updatedPosts = this.state.feedPosts;
+    updatedPosts.unshift({
+      id: Date.now(),
+      headerImgs: [{
+        headerImgSrc: image,
+        headerAltText: `Feed ${this.state.feedPosts.length}`
+      }],
+      proImgSrc: "https://picsum.photos/40",
+      proAltText: "Profile Picture",
+      authorName: "John Doe",
+      isVerified: false,
+      authorJob: "Web Developer",
+      timestamp: `${currDate.getMonth()+1} / ${currDate.getDate()}`,
+      postText: text
     });
     console.log(updatedPosts);
     this.setState({
@@ -100,7 +117,8 @@ class App extends Component {
           <Summary></Summary>
           <Favorites></Favorites>
           <div className="post-collection">
-            <Submition></Submition>
+            <Submition
+              onCreate={this.createPost}></Submition>
             <Feed
               posts={this.state.feedPosts}
               onDelete={this.deletePost}></Feed>
