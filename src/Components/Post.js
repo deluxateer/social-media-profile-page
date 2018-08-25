@@ -6,7 +6,9 @@ const Post = ({ id, headerImgs, proImgSrc, proAltText, feedRecent, authorName, i
   let tempKey = 0;
   if (headerImgs) {
     headerImgs.map(img => {
-      HeaderImgsJSX.push(<img key={tempKey++} className="card-img-top" src={img.headerImgSrc} alt={img.headerAltText}/>);
+      if (img.headerImgSrc){
+        HeaderImgsJSX.push(<img key={tempKey++} className="card-img-top" src={img.headerImgSrc} alt={img.headerAltText}/>);
+      }
     });
   }
 

@@ -92,8 +92,6 @@ Favorites
 .favorites .post:first-child { margin-bottom: 0;              }
 .favorites .post:last-child  { margin-top:    0;              }
 
-.favorites button { display: none; }
-
 /* ------------------------
 Post Collection
 ------------------------  */

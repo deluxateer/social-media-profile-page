@@ -29,8 +29,12 @@ class Submition extends Component {
     e.preventDefault();
 
     this.props.onCreate(this.state.textarea, this.state.image);
+
+    // Resets the input field
     document.querySelector('textarea').value = "";
     document.querySelector('.custom-file-label').innerText = "Choose Image File";
+    document.querySelector('.custom-file-input').value = "";
+    this.setState({ image: "" });
   }
 
   render() {
@@ -42,7 +46,7 @@ class Submition extends Component {
         <div className="card-body">
           <form onSubmit={this.onSubmit}>
             <div className="form-group">
-              <textarea name="textarea" onChange={this.onChange} className="form-control form-control-lg " placeholder="What did/will you achieve?" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <textarea name="textarea" onChange={this.onChange} className="form-control form-control-lg " placeholder="What did/will you achieve?" id="exampleFormControlTextarea1" rows="3" required></textarea>
             </div>
             <div className="input-group mb-3">
               <div className="custom-file">

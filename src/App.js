@@ -42,42 +42,58 @@ class App extends Component {
           authorJob: "Web Developer",
           timestamp: "05/17",
           postText: "I'm sure Rex will be happy about the rope toy I made for him!"
-        },
+        }
+      ],
+      favPosts: [
         {
-          id: 2,
+          id: 0,
           headerImgs: [
             {
               headerImgSrc: "https://picsum.photos/200/100",
-              headerAltText: "Feed 3"
-            },
-            {
-              headerImgSrc: "https://picsum.photos/200/100",
-              headerAltText: "Feed 3"
+              headerAltText: "Favorites 1"
             }
           ],
           proImgSrc: "https://picsum.photos/40",
           proAltText: "Profile Picture",
-          authorName: "John Doe",
-          isVerified: false,
-          authorJob: "Web Developer",
-          timestamp: "05/14",
-          postText: "I'm making great progress so far. I can't to show you all what it will look like when it's done!"
+          authorName: "Jane Smith",
+          isVerified: true,
+          authorJob: "Embroidery Artisan",
+          timestamp: "03/23",
+          postText: "I finally made the quilt I've always dreamed of making!"
         },
         {
-          id: 3,
-          headerImgs: [],
+          id: 1,
+          headerImgs: [
+            {
+              headerImgSrc: "https://picsum.photos/200/100",
+              headerAltText: "Favorite 2"
+            },
+            {
+              headerImgSrc: "https://picsum.photos/200/100",
+              headerAltText: "Favorite 2"
+            }
+          ],
           proImgSrc: "https://picsum.photos/40",
           proAltText: "Profile Picture",
-          authorName: "John Doe",
+          authorName: "Chance Jackson",
           isVerified: false,
-          authorJob: "Web Developer",
-          timestamp: "05/12",
-          postText: "I'm going to make an ecommerce store. I've always wanted to make one and I've finally decided to do something about it!"
+          authorJob: "Polisher",
+          timestamp: "03/16",
+          postText: "It's amazing to see how much simple polishing can do to bring out the beauty in a steel object!"
         }
       ]
     }
 
-  deletePost = (postId) => {
+  deleteFavPost = (postId) => {
+    let updatedPosts = this.state.favPosts.filter(currPost => {
+      return currPost.id !== postId;
+    });
+    this.setState({
+      favPosts: updatedPosts
+    });
+  };
+
+  deleteFeedPost = (postId) => {
     let updatedPosts = this.state.feedPosts.filter(currPost => {
       return currPost.id !== postId;
     });
@@ -103,7 +119,6 @@ class App extends Component {
       timestamp: `${currDate.getMonth()+1} / ${currDate.getDate()}`,
       postText: text
     });
-    console.log(updatedPosts);
     this.setState({
       feedPosts: updatedPosts
     });
@@ -115,13 +130,15 @@ class App extends Component {
         <Navbar></Navbar>
         <main className="container">
           <Summary></Summary>
-          <Favorites></Favorites>
+          <Favorites
+            favPosts={this.state.favPosts}
+            onDelete={this.deleteFavPost}></Favorites>
           <div className="post-collection">
             <Submition
               onCreate={this.createPost}></Submition>
             <Feed
               posts={this.state.feedPosts}
-              onDelete={this.deletePost}></Feed>
+              onDelete={this.deleteFeedPost}></Feed>
           </div>
         </main>
         <footer>
